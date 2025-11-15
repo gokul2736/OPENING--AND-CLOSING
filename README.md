@@ -1,6 +1,7 @@
 # EX-10 OPENING--AND-CLOSING
-# Name : Markandeyan Gokul
-# Register Number : 212224240086
+# Developed By: Markandeyan Gokul
+# Reg.No: 212224240086
+
 ## Aim
 To implement Opening and Closing using Python and OpenCV.
 
@@ -8,9 +9,9 @@ To implement Opening and Closing using Python and OpenCV.
 1. Anaconda - Python 3.7
 2. OpenCV
 ## Algorithm:
+
 ### Step1:
 Import the necessary packages
-
 
 ### Step2:
 Create the Text using cv2.putText
@@ -24,68 +25,52 @@ Use Opening operation
 ### Step5:
 Use Closing Operation
 
- 
+
 ## Program:
-```
+
+## Import the necessary packages
+```python
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+```
 
-# Step 1: Load the image using cv2.imread()
-image = cv2.imread("Fish.jpg")  
-
-# Step 2: Create a structuring element (5x5 rectangular)
-kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
-
-# Step 3: Use Opening operation (erosion followed by dilation)
-opening_image = cv2.morphologyEx(image, cv2.MORPH_OPEN, kernel)
-
-# Step 4: Use Closing operation (dilation followed by erosion)
-closing_image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
-
-# Convert images from BGR to RGB for Matplotlib
-image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-opening_image_rgb = cv2.cvtColor(opening_image, cv2.COLOR_BGR2RGB)
-closing_image_rgb = cv2.cvtColor(closing_image, cv2.COLOR_BGR2RGB)
-
-# Plot the original, opening, and closing images using Matplotlib
-plt.figure(figsize=(10, 5))
-
-plt.subplot(1, 3, 1)
-plt.imshow(image_rgb)
-plt.title("Original Image")
+## Create the Text using cv2.putText
+```python
+img = np.zeros((100, 550), dtype = 'uint8')
+font = cv2.FONT_ITALIC
+cv2.putText(img, 'Gokul', (5,70), font, 2, (255), 5, cv2.LINE_AA)
+n_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+plt.imshow(n_img)
 plt.axis("off")
+```
 
-plt.subplot(1, 3, 2)
-plt.imshow(opening_image_rgb)
-plt.title("Opening Operation")
+## Create the structuring element
+```python
+kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (11,11))
+```
+
+## Use Opening operation
+```python
+image_open = cv2.morphologyEx(n_img, cv2.MORPH_OPEN, kernel)
+plt.imshow(image_open)
 plt.axis("off")
-
-plt.subplot(1, 3, 3)
-plt.imshow(closing_image_rgb)
-plt.title("Closing Operation")
+```
+## Use Closing Operation
+```python
+image_close = cv2.morphologyEx(n_img, cv2.MORPH_CLOSE, kernel)
+plt.imshow(image_close)
 plt.axis("off")
-
-plt.tight_layout()
-plt.show()
-
 ```
 ## Output:
-
 ### Display the input Image
-![image](https://github.com/user-attachments/assets/c6772ac7-5d88-46ba-9c06-f63c15e3c7ed)
-
+<img width="811" height="188" alt="image" src="https://github.com/user-attachments/assets/be86976e-acd2-4050-8ea2-e0fc5f709968" />
 
 ### Display the result of Opening
-![image](https://github.com/user-attachments/assets/1dc47e42-1357-449e-9d9b-6984ddb666a6)
-
-
+<img width="813" height="191" alt="image" src="https://github.com/user-attachments/assets/e35d6f81-244f-427d-a1c9-4a8565b7e20b" />
 
 ### Display the result of Closing
-![image](https://github.com/user-attachments/assets/4f0cd2c5-bbdd-4cbc-bf99-ab1bc25001be)
-
-
-
+<img width="793" height="200" alt="image" src="https://github.com/user-attachments/assets/f9fe98ce-866a-441a-9641-a0748580a548" />
 
 ## Result
 Thus the Opening and Closing operation is used in the image using python and OpenCV.
